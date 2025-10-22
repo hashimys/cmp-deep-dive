@@ -14,6 +14,8 @@ export class NewTicketComponent implements AfterViewInit, OnInit{
   @ViewChild('form') private readonly form?: ElementRef<HTMLFormElement>;
   // private readonly form = viewChild.required<ElementRef<HTMLFormElement>>('form');
   // @Output() add = new EventEmitter<{title: string; text: string}>();
+  entiredTitle = '';
+  entiredText = '';
   add = output<{ title: string; text: string }>();
 
   ngOnInit(): void {
@@ -26,9 +28,10 @@ export class NewTicketComponent implements AfterViewInit, OnInit{
       console.log(this.form?.nativeElement);
   }
 
-  onSubmit(title: string, ticketText: string) {
-    this.add.emit({ title: title, text: ticketText });
-    this.form?.nativeElement.reset();
+  onSubmit() {
+    this.add.emit({ title: this.entiredTitle, text: this.entiredText });
+    this.entiredText = '';
+    this.entiredTitle = '';
   }
 
 }

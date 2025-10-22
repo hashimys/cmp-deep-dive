@@ -10,9 +10,7 @@ import { Ticket } from '../ticket.model';
   styleUrl: './ticket.component.css'
 })
 export class TicketComponent {
-  // @Input({}) ...
   data = input.required<Ticket>();
-  // @Output('closeTicket')
   closing = output();
   detailsVisible = signal(false);
 
@@ -21,7 +19,6 @@ export class TicketComponent {
   }
 
   onMarkAsCompleted() {
-    console.log('Marking ticket as completed...');
     this.closing.emit();
   }
 }
