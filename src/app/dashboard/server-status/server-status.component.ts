@@ -1,4 +1,4 @@
-import { Component, DestroyRef, effect, inject,  OnInit, signal } from '@angular/core';
+import { AfterViewInit, Component, DestroyRef, effect, inject,  OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -7,7 +7,7 @@ import { Component, DestroyRef, effect, inject,  OnInit, signal } from '@angular
   templateUrl: './server-status.component.html',
   styleUrl: './server-status.component.css',
 })
-export class ServerStatusComponent implements OnInit{
+export class ServerStatusComponent implements OnInit, AfterViewInit {
   currentStatus = signal<'online' | 'offline' | 'unknown'>('offline');
   destroyRef = inject(DestroyRef);
 
